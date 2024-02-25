@@ -34,10 +34,17 @@ static const char *s_KeyStrings[KeyMaxCode-KeySpace] =
 	"\x1b[B",		// KeyDown
 	"\x1b[D",		// KeyLeft
 	"\x1b[C",		// KeyRight
-	"\x1b[[A",		// KeyF1
-	"\x1b[[B",		// KeyF2
-	"\x1b[[C",		// KeyF3
-	"\x1b[[D",		// KeyF4
+//	"\x1b[[A",		// KeyF1
+//	"\x1b[[B",		// KeyF2
+//	"\x1b[[C",		// KeyF3
+//	"\x1b[[D",		// KeyF4
+// GURU DEC:
+	"\x1bOP",		// KeyF1
+	"\x1bOQ",		// KeyF2
+	"\x1bOR",		// KeyF3
+	"\x1bOS",		// KeyF4
+//
+
 	"\x1b[[E",		// KeyF5
 	"\x1b[17~",		// KeyF6
 	"\x1b[18~",		// KeyF7
@@ -56,20 +63,36 @@ static const char *s_KeyStrings[KeyMaxCode-KeySpace] =
 	"*",			// KeyKP_Multiply
 	"-",			// KeyKP_Subtract
 	"+",			// KeyKP_Add
-	"\n",			// KeyKP_Enter
-	"1",			// KeyKP_1
-	"2",			// KeyKP_2
-	"3",			// KeyKP_3
-	"4",			// KeyKP_4
-	"5",			// KeyKP_5
-	"6",			// KeyKP_6
-	"7",			// KeyKP_7
-	"8",			// KeyKP_8
-	"9",			// KeyKP_9
-	"0",			// KeyKP_0
-	"\x1b[G",		// KeyKP_Center
-	",",			// KeyKP_Comma
-	"."			// KeyKP_Period
+//	"\n",			// KeyKP_Enter
+//	"1",			// KeyKP_1
+//	"2",			// KeyKP_2
+//	"3",			// KeyKP_3
+//	"4",			// KeyKP_4
+//	"5",			// KeyKP_5
+//	"6",			// KeyKP_6
+//	"7",			// KeyKP_7
+//	"8",			// KeyKP_8
+//	"9",			// KeyKP_9
+//	"0",			// KeyKP_0
+//	"\x1b[G",		// KeyKP_Center
+//	",",			// KeyKP_Comma
+//	"."			// KeyKP_Period
+
+//	GURU DEC
+	"\x1bOM",			// KeyKP_Enter
+	"\x1bOq",			// KeyKP_1
+	"\x1bOr",			// KeyKP_2
+	"\x1bOs",			// KeyKP_3
+	"\x1bOt",			// KeyKP_4
+	"\x1bOu",			// KeyKP_5
+	"\x1bOv",			// KeyKP_6
+	"\x1bOw",			// KeyKP_7
+	"\x1bOx",			// KeyKP_8
+	"\x1bOy",			// KeyKP_9
+	"\x1bOp",			// KeyKP_0
+	"\x1bOM",		// KeyKP_Center
+	"\x1bOl",			// KeyKP_Comma
+	"\x1bOn"			// KeyKP_Period
 };
 
 TKeyMap actKeyMap;

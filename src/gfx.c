@@ -216,6 +216,9 @@ state_fun state_fun_selectescape;
 state_fun state_fun_waitquarebracket;
 state_fun state_fun_normaltext;
 state_fun state_fun_ignore_digit;
+//GURU
+state_fun state_fun_dec1;
+state_fun state_fun_dec2;
 
 #include "framebuffer.h"
 
@@ -2566,6 +2569,69 @@ back_to_normal:
     return retval;
 }
 
+//GURU
+int state_fun_dec1(char ch, scn_state *state) {
+    if (ch==(char)0x94) {
+        state->next = state_fun_dec2;
+        return 1;
+    }
+    // go back to normal text
+    state->cmd_params_size = 0;
+    state->next = state_fun_normaltext;
+    return 1;
+}
+
+int state_fun_dec2(char ch, scn_state *state) {
+
+    char cc;
+    switch(ch) {
+        case (char)0x80:
+            cc=(char)0x17;
+            break;
+        case (char)0xAC:
+            cc=(char)0x12;
+            break;
+        case (char)0xBC:
+            cc=(char)0x15;
+            break;
+        case (char)0x82:
+            cc=(char)0x16;
+            break;
+        case (char)0x94:
+            cc=(char)0x1A;
+            break;
+        case (char)0xB4:
+            cc=(char)0x11;
+            break;
+        case (char)0x98:
+            cc=(char)0x1B;
+            break;
+        case (char)0xA4:
+            cc=(char)0x13;
+            break;
+        case (char)0x90:
+            cc=(char)0x19;
+            break;
+        case (char)0x8C:
+            cc=(char)0x18;
+            break;
+        case (char)0x9C:
+            cc=(char)0x14;
+            break;
+
+        default:
+            cc=ch;
+    }
+
+    gfx_putc( ctx.term.cursor_row, ctx.term.cursor_col, cc );
+    ++ctx.term.cursor_col;
+
+    // go back to normal text
+    state->cmd_params_size = 0;
+    state->next = state_fun_normaltext;
+    return 1;
+}
+
 /** Read next digit of a parameter or a separator. */
 int state_fun_read_digit( char ch, scn_state *state )
 {
@@ -2682,6 +2748,11 @@ int state_fun_normaltext( char ch, scn_state *state )
     if( ch==TERM_ESCAPE_CHAR )
     {
         state->next = state_fun_waitsquarebracket;
+        return 1;
+    }
+
+    if (ch==(char)0xE2) {
+        state->next = state_fun_dec1;
         return 1;
     }
 

@@ -41,11 +41,11 @@ run: pigfx.elf
 	./launch_qemu.bash
 
 kernel: pigfx.img
-	@if [ $(RPI) == 1 ]; then \
+	@if [ "$(RPI)" = "1" ]; then \
 		cp pigfx.img bin/kernel.img; \
-	elif [ $(RPI) == 2 ]; then \
+	elif [ "$(RPI)" = "2" ]; then \
 		cp pigfx.img bin/kernel7.img; \
-	elif [ $(RPI) == 3 ]; then \
+	elif [ "$(RPI)" = "3" ]; then \
 		cp pigfx.img bin/kernel8-32.img; \
 	else \
 		cp pigfx.img bin/recovery7l.img; \

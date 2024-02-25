@@ -152,7 +152,8 @@ void initialize_framebuffer(unsigned int width, unsigned int height, unsigned in
     gfx_set_env( p_fb, v_w, v_h, bpp, pitch, fbsize );
     gfx_set_drawing_mode(drawingNORMAL);
     gfx_term_set_tabulation(8);
-    gfx_term_set_font(8,16);
+// gfx_term_set_font(8,16);
+    gfx_term_set_font(8,8);
     gfx_clear();
 }
 
@@ -411,7 +412,8 @@ void entry_point(unsigned int r0, unsigned int r1, unsigned int *atags)
     timers_init();
     attach_timer_handler( HEARTBEAT_FREQUENCY, _heartbeat_timer_handler, 0, 0 );
 
-    initialize_framebuffer(640, 480, 8);
+//initialize_framebuffer(640, 480, 8);
+    initialize_framebuffer(800,480,8);
 
     gfx_term_putstring( "\x1B[2J" ); // Clear screen
     gfx_set_bg(BLUE);
